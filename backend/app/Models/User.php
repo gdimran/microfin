@@ -17,12 +17,12 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
-    protected $fillable = [
-        'name',
-        'email',
-        'password',
-    ];
-
+    // protected $fillable = [
+    //     'name',
+    //     'email',
+    //     'password',
+    // ];
+    protected $guarded = [];
     /**
      * The attributes that should be hidden for serialization.
      *
@@ -32,6 +32,17 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
+
+    //send phone number to twilio
+    public function routeNotificationForTwilio(){
+        return $this->phone;
+    }
+
+
+    public function customers(){
+        return $this->hasMany(Customer::class);
+    }
+
 
     
 }
