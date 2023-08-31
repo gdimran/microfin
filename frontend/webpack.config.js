@@ -8,14 +8,14 @@ const processNestedHtml = (content, loaderContext, dir = null) =>
   !INCLUDE_PATTERN.test(content)
     ? content
     : content.replace(INCLUDE_PATTERN, (m, src) => {
-        const filePath = path.resolve(dir || loaderContext.context, src)
-        loaderContext.dependency(filePath)
-        return processNestedHtml(
-          loaderContext.fs.readFileSync(filePath, 'utf8'),
-          loaderContext,
-          path.dirname(filePath)
-        )
-      })
+      const filePath = path.resolve(dir || loaderContext.context, src)
+      loaderContext.dependency(filePath)
+      return processNestedHtml(
+        loaderContext.fs.readFileSync(filePath, 'utf8'),
+        loaderContext,
+        path.dirname(filePath)
+      )
+    })
 
 // HTML generation
 const paths = []
@@ -43,7 +43,7 @@ module.exports = {
       directory: path.join(__dirname, './build'),
     },
     compress: true,
-    port: 3000,
+    port: 9000,
   },
   module: {
     rules: [

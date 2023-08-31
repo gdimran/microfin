@@ -10,6 +10,7 @@ import chart02 from "./components/chart-02";
 import chart03 from "./components/chart-03";
 import chart04 from "./components/chart-04";
 import map01 from "./components/map-01";
+//import modal from "./components/modal";
 
 Alpine.plugin(persist)
 window.Alpine = Alpine;
@@ -45,4 +46,34 @@ document.addEventListener("DOMContentLoaded", () => {
   chart03();
   chart04();
   map01();
+  //modal();
 });
+// const loadmodal = document.querySelector("#modalloanApp");
+// loadmodal.addEventListener("click", () => {
+//   modal();
+// });
+
+import { Modal } from 'flowbite'
+
+const $modalElement = document.querySelector('#modalloanApp');
+const $modalBorrower = document.querySelector('#modalBorrower');
+
+const modalOptions = {
+  placement: 'bottom-right',
+  backdrop: 'dynamic',
+  backdropClasses: 'bg-gray-900 bg-opacity-50 dark:bg-opacity-80 fixed inset-0 z-40',
+  onHide: () => {
+    console.log('modal is hidden');
+  },
+  onShow: () => {
+    console.log('modal is shown');
+  },
+  onToggle: () => {
+    console.log('modal has been toggled');
+  }
+}
+
+const modal = new Modal($modalElement, modalOptions);
+const modalBorrower = new Modal($modalBorrower, modalOptions);
+modal.hide();
+modalBorrower.hide();
