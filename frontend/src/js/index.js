@@ -57,7 +57,7 @@ import { Modal } from 'flowbite'
 
 const $modalElement = document.querySelector('#modalloanApp');
 const $modalBorrower = document.querySelector('#modalBorrower');
-
+const $modalPayment = document.querySelector('#modalPayments');
 const modalOptions = {
   placement: 'bottom-right',
   backdrop: 'dynamic',
@@ -75,5 +75,7 @@ const modalOptions = {
 
 const modal = new Modal($modalElement, modalOptions);
 const modalBorrower = new Modal($modalBorrower, modalOptions);
+const modalPayment = new Modal($modalPayment, modalOptions);
 modal.hide();
 modalBorrower.hide();
+modalPayment.hide();
